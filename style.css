@@ -38,6 +38,9 @@ body {
 	padding: 0.5rem 1rem;
 	border-radius: 8px;
 }
+.btn-active {
+	background-color: #bbb;
+}
 .main-nav li:hover {
 	background-color: #ccc;
 }
@@ -51,7 +54,7 @@ body {
 }
 
 .mobile--menu-btn:hover {
-	background-color: #555;
+	background-color: #ccc;
 }
 
 .logo {
@@ -72,8 +75,18 @@ body {
 	background-color: #ccc;
 }
 
-.btn-active {
-	background-color: #bbb;
+.main-container {
+	margin: 0 auto;
+	max-width: 1200px;
+	padding: 1rem;
+}
+
+.page {
+	display: none;
+}
+
+.page-active {
+	display: block;
 }
 
 @media (max-width: 600px) {

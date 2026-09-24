@@ -14,19 +14,38 @@
 		<!-- Header (shared) -->
 		<header class="main-header">
 			<div class="logo">
-				<h1 class="logo-text btn-active" id="main-menu-btn">Sudoku</h1>
+				<h1 class="logo-text btn-active menu-button" id="main-menu-btn">
+					Sudoku
+				</h1>
 				<button class="mobile--menu-btn" id="menu-toggle">
 					<i class="fa-solid fa-bars"></i>
 				</button>
 			</div>
 			<nav class="main-nav">
 				<ul class="nav-list">
-					<li class="nav-item" id="scores-menu-btn">Scores</li>
-					<li class="nav-item" id="how-to-play-menu-btn">How to Play</li>
-					<li class="nav-item" id="settings-menu-btn">Settings</li>
+					<li class="nav-item menu-button" id="scores-menu-btn">Scores</li>
+					<li class="nav-item menu-button" id="how-to-play-menu-btn">
+						How to Play
+					</li>
+					<li class="nav-item menu-button" id="settings-menu-btn">Settings</li>
 				</ul>
 			</nav>
 		</header>
+
+		<main class="main-container">
+			<div class="page page-active" id="main-page">
+				<h1>Main Game</h1>
+			</div>
+			<div class="page" id="scores-page">
+				<h1>Scores</h1>
+			</div>
+			<div class="page" id="how-to-play-page">
+				<h1>How to Play</h1>
+			</div>
+			<div class="page" id="settings-page">
+				<h1>Settings</h1>
+			</div>
+		</main>
 
 		<script src="scripts/app.js" type="module"></script>
 	</body>
