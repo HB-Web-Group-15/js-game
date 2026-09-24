@@ -1,3 +1,4 @@
+import { getNewBoard } from "../api/SudokuApi.js";
 import handleCellClick from "../events/cell-click.js";
 
 export function createCell({ row, col, value = "", prefilled = false }) {
@@ -34,6 +35,7 @@ export function createCell({ row, col, value = "", prefilled = false }) {
 	return cell;
 }
 
+
 export function createGrid({ puzzle }) {
 	const grid = document.getElementById("sudoku-grid");
 	grid.innerHTML = "";
@@ -48,4 +50,13 @@ export function createGrid({ puzzle }) {
 			grid.appendChild(cell);
 		}
 	}
+}
+
+export function startNewGame(difficulty){
+	getNewBoard({difficulty})
+	.then((newBoard)=>{
+		createGrid(newBoard);
+	})
+	.catch((error)=>console.error("Error fetching new board: ",error));
+
 }
