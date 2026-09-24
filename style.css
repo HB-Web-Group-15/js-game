@@ -72,6 +72,10 @@ body {
 	background-color: #ccc;
 }
 
+.btn-active {
+	background-color: #bbb;
+}
+
 @media (max-width: 600px) {
 	.main-nav {
 		display: none;
@@ -84,7 +88,7 @@ body {
 		flex-direction: column;
 		gap: 0;
 	}
-	#menu-toggle {
+	.mobile--menu-btn {
 		display: block;
 	}
 	.main-header {
