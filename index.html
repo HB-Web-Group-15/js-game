@@ -34,7 +34,47 @@
 
 		<main class="main-container">
 			<div class="page page-active" id="main-page">
-				<h1>Main Game</h1>
+				<header class="game-header">
+					<div class="game-header--title">
+						<h1>Game</h1>
+					</div>
+					<div class="game-header--controls">
+						<select class="selector" name="difficulty" id="difficulty-select">
+							<option value="easy">Easy</option>
+							<option value="medium">Medium</option>
+							<option value="hard">Hard</option>
+						</select>
+						<button class="btn" id="new-game-btn">New Game</button>
+					</div>
+				</header>
+				<div class="game-container">
+					<div class="sudoku-grid" id="sudoku-grid">
+						<!-- Grid gets generated here by JavaScript -->
+					</div>
+				</div>
+				<footer class="game-footer">
+					<button class="game-button" id="note-button">
+						<i class="fa-solid fa-pencil"></i>
+					</button>
+					<button class="game-button" id="number-1">1</button>
+					<button class="game-button" id="number-2">2</button>
+					<button class="game-button" id="number-3">3</button>
+					<button class="game-button" id="number-4">4</button>
+					<button class="game-button" id="number-5">5</button>
+					<button class="game-button" id="number-6">6</button>
+					<button class="game-button" id="number-7">7</button>
+					<button class="game-button" id="number-8">8</button>
+					<button class="game-button" id="number-9">9</button>
+					<button class="game-button" id="check-button">
+						<i class="fa-solid fa-check"></i>
+					</button>
+					<button class="game-button" id="eraser-button">
+						<i class="fa-solid fa-eraser"></i>
+					</button>
+					<button class="game-button" id="reset-button">
+						<i class="fa-solid fa-rotate-left"></i>
+					</button>
+				</footer>
 			</div>
 			<div class="page" id="scores-page">
 				<h1>Scores</h1>
