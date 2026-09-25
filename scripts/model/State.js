@@ -6,9 +6,11 @@
  * @method notify() - Calls all subscribed listener functions with the current state.
  */
 export default class State {
+	#oldState;
 	#state;
 	#listeners;
 	constructor(initialState = {}) {
+		this.#oldState = initialState;
 		this.#state = initialState;
 		this.#listeners = [];
 	}
@@ -21,6 +23,7 @@ export default class State {
 	}
 
 	setState(newState) {
+		this.#oldState = this.#state;
 		this.#state = { ...this.#state, ...newState };
 		this.notify();
 	}
@@ -30,6 +33,8 @@ export default class State {
 	}
 
 	notify() {
-		this.#listeners.forEach((listener) => listener(this.getState()));
+		this.#listeners.forEach((listener) =>
+			listener({ newState: this.#state, oldState: this.#oldState }),
+		);
 	}
 }

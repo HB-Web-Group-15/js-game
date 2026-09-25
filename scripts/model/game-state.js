@@ -1,3 +1,4 @@
+import { updateGrid, updateSelectedCell } from "../util/sudoku.js";
 import State from "./State.js";
 
 const gameState = new State({
@@ -5,12 +6,13 @@ const gameState = new State({
 	puzzle: undefined,
 	solution: undefined,
 	difficulty: undefined,
+	selectedCell: undefined,
 	gameActive: false,
 });
 
-gameState.subscribe((newState) => {
-	const { board, puzzle, solution, difficulty, gameActive } = newState;
-	// TODO: Update board UI based on the new state
+gameState.subscribe(({ newState, oldState }) => {
+	updateGrid(newState, oldState);
+	updateSelectedCell(newState, oldState);
 });
 
 export default gameState;

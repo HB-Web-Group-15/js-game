@@ -216,17 +216,28 @@ h1 {
 	opacity: 1;
 }
 
-.sudoku-cell.selected {
-	background-color: #ffeb3b;
-}
-.sudoku-cell.highlighted {
-	background-color: #c8e6c9;
-}
 .sudoku-cell.top-border {
 	border-top: 2px solid #000;
 }
 .sudoku-cell.left-border {
 	border-left: 2px solid #000;
+}
+.sudoku-cell.highlighted {
+	background-color: #c8e6c9;
+}
+.sudoku-cell.selected {
+	background-color: #ffeb3b;
+}
+.sudoku-cell.highlighted-number::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: transparent;
+	border: 4px solid #4caf50;
+	pointer-events: none;
 }
 
 .game-footer {

@@ -1,4 +1,5 @@
 import handleCellClick from "../events/cell-click.js";
+import gameState from "../model/game-state.js";
 
 export function createCell({ row, col, value = "", prefilled = false }) {
 	const cell = document.createElement("div");
@@ -32,6 +33,10 @@ export function createCell({ row, col, value = "", prefilled = false }) {
 		cell.dataset.prefilled = "true";
 	}
 	return cell;
+}
+
+export function getCell(row, col) {
+	return document.getElementById(`cell-${row}-${col}`);
 }
 
 export function getCellSquare(row, col) {
@@ -82,9 +87,65 @@ export function getCellsWithValue(value) {
 }
 
 export function getCellValue(row, col) {
-	const cell = document.getElementById(`cell-${row}-${col}`);
+	const cell = getCell(row, col);
 	if (cell) {
 		return cell.querySelector(".cell-value").textContent;
 	}
 	return null;
+}
+
+export function updateCellValue(row, col, value) {
+	const currentState = gameState.getState();
+	const newBoard = currentState.board;
+	newBoard[row][col] = value;
+	gameState.setState({ board: newBoard });
+}
+
+export function selectCell(row, col) {
+	gameState.setState({ selectedCell: { row, col } });
+}
+
+export function clearHighlightedCells() {
+	const highlightedCells = document.querySelectorAll(".highlighted");
+	highlightedCells.forEach((cell) => {
+		cell.classList.remove("highlighted");
+	});
+}
+
+export function clearSelectedCells() {
+	const selectedCells = document.querySelectorAll(".selected");
+	selectedCells.forEach((cell) => {
+		cell.classList.remove("selected");
+	});
+}
+
+export function clearNumbersHighlight() {
+	const highlightedNumbers = document.querySelectorAll(".highlighted-number");
+	highlightedNumbers.forEach((cell) => {
+		cell.classList.remove("highlighted-number");
+	});
+}
+
+export function highlightOtherCells({ row, col }) {
+	const square = getCellSquare(row, col);
+	const highlightedCells = [];
+	highlightedCells.push(getSquareCells(square));
+	highlightedCells.push(getRowCells(row));
+	highlightedCells.push(getColCells(col));
+	highlightedCells.flat().forEach(({ row, col }) => {
+		const cell = getCell(row, col);
+		if (cell) {
+			cell.classList.add("highlighted");
+		}
+	});
+}
+
+export function highlightCellsWithValue(value) {
+	const cellsWithValue = getCellsWithValue(value);
+	cellsWithValue.forEach(({ row, col }) => {
+		const cell = getCell(row, col);
+		if (cell) {
+			cell.classList.add("highlighted-number");
+		}
+	});
 }
