@@ -15,6 +15,11 @@ async function loadPuzzles() {
 	return jsonPuzzles;
 }
 
+/**
+ * Retrieves a new Sudoku board with the specified difficulty.
+ * @param {{difficulty: string}} options - The parameters for the new board.
+ * @returns {Promise<{board: string[][]}>} A promise that resolves to the new Sudoku board.
+ */
 export async function getNewBoard({ difficulty = "easy" }) {
 	const puzzles = await loadPuzzles();
 

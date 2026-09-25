@@ -10,9 +10,13 @@ import {
 	highlightOtherCells,
 } from "./sudoku-cells.js";
 
+/**
+ * Creates a new Sudoku grid.
+ * @param {{puzzle: string[][], solution: string[][], difficulty: string}} gameData - The game data containing the puzzle, solution, and difficulty.
+ */
 export function createGrid({ puzzle, solution, difficulty }) {
 	const grid = document.getElementById("sudoku-grid");
-	grid.innerHTML = "";
+	grid.innerHTML = ""; // Clear existing grid
 	for (let row = 0; row < 9; row++) {
 		for (let col = 0; col < 9; col++) {
 			const cell = createCell({
@@ -24,6 +28,7 @@ export function createGrid({ puzzle, solution, difficulty }) {
 			grid.appendChild(cell);
 		}
 	}
+	// Update the game state with the new puzzle, solution, and difficulty
 	gameState.setState({
 		board: puzzle,
 		puzzle,
@@ -33,6 +38,10 @@ export function createGrid({ puzzle, solution, difficulty }) {
 	});
 }
 
+/**
+ * Starts a new Sudoku game with the specified difficulty.
+ * @param {string} difficulty - The difficulty level of the new game.
+ */
 export function startNewGame(difficulty) {
 	getNewBoard({ difficulty })
 		.then((newBoard) => {
@@ -41,6 +50,12 @@ export function startNewGame(difficulty) {
 		.catch((error) => console.error("Error fetching new board: ", error));
 }
 
+/**
+ * Updates the Sudoku grid based on the new game state.
+ * @param {{board: string[][]}} newState - The new game state.
+ * @param {{board: string[][]}} oldState - The old game state.
+ * @returns {void}
+ */
 export function updateGrid(newState, oldState) {
 	if (!newState.gameActive) return; // Only update the grid if the game is active
 	if (!oldState || !oldState.board) return; // If there's no old state, we can't compare, so we skip the update
@@ -55,6 +70,12 @@ export function updateGrid(newState, oldState) {
 	});
 }
 
+/**
+ * Updates the selected cell in the Sudoku grid based on the new game state.
+ * @param {{board: string[][], selectedCell: {row: number, col: number}}} newState - The new game state.
+ * @param {{board: string[][], selectedCell: {row: number, col: number}}} oldState - The old game state.
+ * @returns {void}
+ */
 export function updateSelectedCell(newState, oldState) {
 	if (
 		JSON.stringify(newState.selectedCell) ===

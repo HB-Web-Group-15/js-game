@@ -15,6 +15,11 @@ export default class State {
 		this.#listeners = [];
 	}
 
+	/**
+	 * Subscribes a listener function to the state changes.
+	 * @param {({newState: {}, oldState: {}}) => void} listener
+	 * @returns {Function} A function to unsubscribe the listener.
+	 */
 	subscribe(listener) {
 		this.#listeners.push(listener);
 		return () => {
@@ -22,16 +27,27 @@ export default class State {
 		};
 	}
 
+	/**
+	 * Updates the state with the provided new state and notifies all subscribers of the change.
+	 * @param {Object} newState - An object containing the new state properties to be merged with the current state.
+	 */
 	setState(newState) {
 		this.#oldState = this.#state;
 		this.#state = { ...this.#state, ...newState };
 		this.notify();
 	}
 
+	/**
+	 * Returns a copy of the current state to prevent direct manipulation.
+	 * @returns {Object} A copy of the current state to prevent direct manipulation.
+	 */
 	getState() {
 		return structuredClone(this.#state); // Return a copy to prevent direct manipulation
 	}
 
+	/**
+	 * Calls all subscribed listener functions with the current state.
+	 */
 	notify() {
 		this.#listeners.forEach((listener) =>
 			listener({ newState: this.#state, oldState: this.#oldState }),
