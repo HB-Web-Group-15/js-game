@@ -215,7 +215,9 @@ h1 {
 .note-number.visible {
 	opacity: 1;
 }
-
+.sudoku-cell.incorrect {
+	color: #f44336;
+}
 .sudoku-cell.top-border {
 	border-top: 2px solid #000;
 }

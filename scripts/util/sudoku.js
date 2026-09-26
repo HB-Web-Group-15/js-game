@@ -63,6 +63,8 @@ export function updateGrid(newState, oldState) {
 	const cells = document.querySelectorAll("#sudoku-grid .sudoku-cell");
 	cells.forEach((cell) => {
 		if (!cell) return;
+		if (cell.classList.contains("incorrect"))
+			cell.classList.remove("incorrect"); // Clear incorrect highlight when updating the grid
 		const row = parseInt(cell.dataset.row);
 		const col = parseInt(cell.dataset.col);
 		const newValue = newState.board[row][col];
