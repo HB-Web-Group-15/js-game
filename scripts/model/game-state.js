@@ -1,4 +1,5 @@
 import {
+  updateActiveState,
   updateGrid,
   updatePauseState,
   updateSelectedCell,
@@ -19,6 +20,7 @@ gameState.subscribe(({ newState, oldState }) => {
   updateGrid(newState, oldState);
   updateSelectedCell(newState, oldState);
   updatePauseState(newState, oldState);
+  updateActiveState(newState, oldState);
 });
 
 export default gameState;

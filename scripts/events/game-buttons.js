@@ -1,5 +1,6 @@
 import gameState from "../model/game-state.js";
 import noteState from "../model/note-state.js";
+import timerState from "../model/timer-state.js";
 import {
   getCell,
   isCellPrefilled,
@@ -48,7 +49,12 @@ document.querySelectorAll(".game-button").forEach((button) => {
             if (!isCorrect) isComplete = false;
           }
         }
-        if (isComplete) alert("Congratulations, you solved the puzzle!");
+        if (isComplete) {
+          gameState.setState({ gameActive: false });
+          document.getElementById("sudoku-grid").dataset.completed = "true";
+          // TODO: Save the time to localStorage
+          console.log(timerState.getState().timer);
+        }
         break;
       }
       case "reset-button": {

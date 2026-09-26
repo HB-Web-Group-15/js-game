@@ -4,6 +4,7 @@ import "./events/menu-buttons.js";
 import "./events/mobile-menu.js";
 import "./events/new-game.js";
 import "./events/timer.js";
+import gameState from "./model/game-state.js";
 import { createGrid } from "./util/sudoku.js";
 
 const examplePuzzle = {
@@ -30,6 +31,12 @@ const examplePuzzle = {
     ["2", "8", "9", "1", "5", "7", "3", "6", "4"],
     ["1", "7", "4", "3", "9", "6", "2", "5", "8"],
   ],
+};
+
+window.solve = function () {
+  const { solution } = gameState.getState();
+  if (!solution) return;
+  gameState.setState({ board: structuredClone(solution) });
 };
 
 createGrid(examplePuzzle);

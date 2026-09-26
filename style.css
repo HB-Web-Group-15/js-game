@@ -199,6 +199,30 @@ h1 {
   z-index: 100;
 }
 
+.sudoku-grid[data-completed="true"] {
+  pointer-events: none;
+}
+
+.sudoku-grid[data-completed="true"]::after {
+  content: "Congratulations! You completed the puzzle! \A Start a new game to play again.";
+  white-space: pre-line;
+  color: #000;
+  text-shadow: 1px 1px 2px #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  padding: 1rem;
+  text-align: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(231, 231, 231, 0.75);
+  backdrop-filter: blur(2px);
+  z-index: 100;
+}
+
 .sudoku-cell {
   z-index: 99;
   position: relative;

@@ -30,6 +30,8 @@ export function createGrid({ puzzle, solution, difficulty }) {
       grid.appendChild(cell);
     }
   }
+  grid.removeAttribute("data-completed"); // Remove the completed attribute when creating a new grid
+  grid.removeAttribute("data-paused"); // Remove the paused attribute when creating a new grid
   // Update the game state with the new puzzle, solution, and difficulty
   gameState.setState({
     board: puzzle,
@@ -122,6 +124,8 @@ export function updatePauseState(newState, oldState) {
   const pauseButtonIcon = document
     .getElementById("pause-btn")
     .querySelector("i.fa-solid");
+  const gameButtons = document.querySelectorAll(".game-button");
+  gameButtons.forEach((button) => (button.disabled = newState.paused));
   if (newState.paused) {
     pauseButtonIcon.classList.remove("fa-pause");
     pauseButtonIcon.classList.add("fa-play");
@@ -129,6 +133,14 @@ export function updatePauseState(newState, oldState) {
     pauseButtonIcon.classList.remove("fa-play");
     pauseButtonIcon.classList.add("fa-pause");
   }
+}
+
+export function updateActiveState(newState, oldState) {
+  if (newState.gameActive === oldState.gameActive) return;
+  const gameButtons = document.querySelectorAll(".game-button");
+  gameButtons.forEach((button) => (button.disabled = !newState.gameActive));
+  const pauseButton = document.getElementById("pause-btn");
+  if (pauseButton) pauseButton.disabled = !newState.gameActive;
 }
 
 export function updateTimer(newState, oldState) {
