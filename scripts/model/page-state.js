@@ -16,7 +16,8 @@ pageState.subscribe((newState, oldState) => {
     });
   else if (
     newState.currentPage === "main-page" &&
-    oldState.currentPage !== "main-page"
+    oldState.currentPage !== "main-page" &&
+    document.getElementById("sudoku-grid").dataset.completed !== "true"
   )
     gameState.setState({ gameActive: true });
 });
