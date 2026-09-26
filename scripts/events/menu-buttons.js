@@ -1,4 +1,4 @@
-const pages = document.querySelectorAll(".page");
+import pageState from "../model/page-state.js";
 const menuButtons = document.querySelectorAll(".menu-button");
 
 /**
@@ -6,26 +6,12 @@ const menuButtons = document.querySelectorAll(".menu-button");
  * @param {string} pageId - The ID of the page to show.
  */
 function showPage(pageId) {
-	// TODO: Replace functionality with state management system
-	pages.forEach((page) => {
-		if (page.id === pageId) {
-			page.classList.add("page-active");
-		} else {
-			page.classList.remove("page-active");
-		}
-	});
-	menuButtons.forEach((button) => {
-		if (button.id === pageId.replace("-page", "-menu-btn")) {
-			button.classList.add("btn-active");
-		} else {
-			button.classList.remove("btn-active");
-		}
-	});
+  pageState.setState({ currentPage: pageId });
 }
 
 menuButtons.forEach((button) => {
-	button.addEventListener("click", () => {
-		const targetPage = button.id.replace("-menu-btn", "") + "-page";
-		showPage(targetPage);
-	});
+  button.addEventListener("click", () => {
+    const targetPage = button.id.replace("-menu-btn", "") + "-page";
+    showPage(targetPage);
+  });
 });

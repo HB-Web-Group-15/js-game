@@ -1,97 +1,100 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="style.css" />
-		<script
-			src="https://kit.fontawesome.com/ee49ee0006.js"
-			crossorigin="anonymous"
-		></script>
-		<title>JS Game</title>
-	</head>
-	<body>
-		<!-- Header (shared) -->
-		<header class="main-header">
-			<div class="logo">
-				<h1 class="logo-text btn-active menu-button" id="main-menu-btn">
-					Sudoku
-				</h1>
-				<button class="mobile--menu-btn" id="menu-toggle">
-					<i class="fa-solid fa-bars"></i>
-				</button>
-			</div>
-			<nav class="main-nav">
-				<ul class="nav-list">
-					<li class="nav-item menu-button" id="scores-menu-btn">Scores</li>
-					<li class="nav-item menu-button" id="how-to-play-menu-btn">
-						How to Play
-					</li>
-					<li class="nav-item menu-button" id="settings-menu-btn">Settings</li>
-				</ul>
-			</nav>
-		</header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/ee49ee0006.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>JS Game</title>
+  </head>
+  <body>
+    <!-- Header (shared) -->
+    <header class="main-header">
+      <div class="logo">
+        <h1 class="logo-text btn-active menu-button" id="main-menu-btn">
+          Sudoku
+        </h1>
+        <button class="mobile--menu-btn" id="menu-toggle">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+      <nav class="main-nav">
+        <ul class="nav-list">
+          <li class="nav-item menu-button" id="scores-menu-btn">Scores</li>
+          <li class="nav-item menu-button" id="how-to-play-menu-btn">
+            How to Play
+          </li>
+          <li class="nav-item menu-button" id="settings-menu-btn">Settings</li>
+        </ul>
+      </nav>
+    </header>
 
-		<main class="main-container">
-			<!-- Sudoku page -->
-			<div class="page page-active" id="main-page">
-				<header class="game-header">
-					<div class="game-header--title">
-						<h1>Game</h1>
-						<span id="game-timer">00:00</span>
-					</div>
-					<div class="game-header--controls">
-						<select class="selector" name="difficulty" id="difficulty-select">
-							<option value="easy">Easy</option>
-							<option value="medium">Medium</option>
-							<option value="hard">Hard</option>
-						</select>
-						<button class="btn" id="new-game-btn">New Game</button>
-					</div>
-				</header>
-				<div class="game-container">
-					<div class="sudoku-grid" id="sudoku-grid">
-						<!-- Grid gets generated here by JavaScript -->
-					</div>
-				</div>
-				<footer class="game-footer">
-					<button class="game-button" id="note-button">
-						<i class="fa-solid fa-pencil"></i>
-					</button>
-					<button class="game-button" id="number-1">1</button>
-					<button class="game-button" id="number-2">2</button>
-					<button class="game-button" id="number-3">3</button>
-					<button class="game-button" id="number-4">4</button>
-					<button class="game-button" id="number-5">5</button>
-					<button class="game-button" id="number-6">6</button>
-					<button class="game-button" id="number-7">7</button>
-					<button class="game-button" id="number-8">8</button>
-					<button class="game-button" id="number-9">9</button>
-					<button class="game-button" id="check-button">
-						<i class="fa-solid fa-check"></i>
-					</button>
-					<button class="game-button" id="eraser-button">
-						<i class="fa-solid fa-eraser"></i>
-					</button>
-					<button class="game-button" id="reset-button">
-						<i class="fa-solid fa-rotate-left"></i>
-					</button>
-				</footer>
-			</div>
-			<!-- Scores page -->
-			<div class="page" id="scores-page">
-				<h1>Scores</h1>
-			</div>
-			<!-- How to Play page -->
-			<div class="page" id="how-to-play-page">
-				<h1>How to Play</h1>
-			</div>
-			<!-- Settings page -->
-			<div class="page" id="settings-page">
-				<h1>Settings</h1>
-			</div>
-		</main>
+    <main class="main-container">
+      <!-- Sudoku page -->
+      <div class="page page-active" id="main-page">
+        <header class="game-header">
+          <div class="game-header--title">
+            <h1>Game</h1>
+            <span id="game-timer">00:00</span>
+            <button class="btn btn-squared" id="pause-btn">
+              <i class="fa-solid fa-pause"></i>
+            </button>
+          </div>
+          <div class="game-header--controls">
+            <select class="selector" name="difficulty" id="difficulty-select">
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="hard">Hard</option>
+            </select>
+            <button class="btn" id="new-game-btn">New Game</button>
+          </div>
+        </header>
+        <div class="game-container">
+          <div class="sudoku-grid" id="sudoku-grid">
+            <!-- Grid gets generated here by JavaScript -->
+          </div>
+        </div>
+        <footer class="game-footer">
+          <button class="game-button" id="note-button">
+            <i class="fa-solid fa-pencil"></i>
+          </button>
+          <button class="game-button" id="number-1">1</button>
+          <button class="game-button" id="number-2">2</button>
+          <button class="game-button" id="number-3">3</button>
+          <button class="game-button" id="number-4">4</button>
+          <button class="game-button" id="number-5">5</button>
+          <button class="game-button" id="number-6">6</button>
+          <button class="game-button" id="number-7">7</button>
+          <button class="game-button" id="number-8">8</button>
+          <button class="game-button" id="number-9">9</button>
+          <button class="game-button" id="check-button">
+            <i class="fa-solid fa-check"></i>
+          </button>
+          <button class="game-button" id="eraser-button">
+            <i class="fa-solid fa-eraser"></i>
+          </button>
+          <button class="game-button" id="reset-button">
+            <i class="fa-solid fa-rotate-left"></i>
+          </button>
+        </footer>
+      </div>
+      <!-- Scores page -->
+      <div class="page" id="scores-page">
+        <h1>Scores</h1>
+      </div>
+      <!-- How to Play page -->
+      <div class="page" id="how-to-play-page">
+        <h1>How to Play</h1>
+      </div>
+      <!-- Settings page -->
+      <div class="page" id="settings-page">
+        <h1>Settings</h1>
+      </div>
+    </main>
 
-		<script src="scripts/app.js" type="module"></script>
-	</body>
+    <script src="scripts/app.js" type="module"></script>
+  </body>
 </html>
