@@ -2,6 +2,7 @@ import "./events/menu-buttons.js";
 import "./events/mobile-menu.js";
 import "./events/new-game.js";
 import "./events/keydown.js"
+import "./events/game-buttons.js"
 import { createGrid } from "./util/sudoku.js";
 
 const examplePuzzle = {
