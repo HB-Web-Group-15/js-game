@@ -10,6 +10,5 @@ export default function handleCellClick(event) {
 	if (!cell.classList.contains("sudoku-cell")) return;
 	const row = parseInt(cell.dataset.row);
 	const col = parseInt(cell.dataset.col);
-	console.log(`Cell clicked: row ${row}, col ${col}`);
 	selectCell(row, col);
 }
