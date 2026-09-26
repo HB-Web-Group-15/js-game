@@ -245,6 +245,7 @@ export function highlightOtherCells({ row, col }) {
  * @param {string} value - The value to highlight.
  */
 export function highlightCellsWithValue(value) {
+	if (!value || value === "0") return; // If the value is null, undefined, or "0", we don't highlight anything
 	const cellsWithValue = getCellsWithValue(value);
 	cellsWithValue.forEach(({ row, col }) => {
 		const cell = getCell(row, col);

@@ -66,8 +66,15 @@ export function updateGrid(newState, oldState) {
 		const row = parseInt(cell.dataset.row);
 		const col = parseInt(cell.dataset.col);
 		const newValue = newState.board[row][col];
-		cell.querySelector(".cell-value").textContent = newValue !== "0" ? newValue : "";
+		cell.querySelector(".cell-value").textContent =
+			newValue !== "0" ? newValue : "";
 	});
+	clearNumbersHighlight();
+	highlightCellsWithValue(
+		newState.selectedCell
+			? newState.board[newState.selectedCell.row][newState.selectedCell.col]
+			: null,
+	);
 }
 
 /**
