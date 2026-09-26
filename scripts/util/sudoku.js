@@ -60,13 +60,13 @@ export function updateGrid(newState, oldState) {
 	if (!newState.gameActive) return; // Only update the grid if the game is active
 	if (!oldState || !oldState.board) return; // If there's no old state, we can't compare, so we skip the update
 	if (JSON.stringify(newState.board) === JSON.stringify(oldState.board)) return; // If the board hasn't changed, we skip the update
-	const cells = document.querySelectorAll("#sudoku-grid .cell");
+	const cells = document.querySelectorAll("#sudoku-grid .sudoku-cell");
 	cells.forEach((cell) => {
 		if (!cell) return;
 		const row = parseInt(cell.dataset.row);
 		const col = parseInt(cell.dataset.col);
 		const newValue = newState.board[row][col];
-		cell.querySelector(".cell-value").textContent = newValue;
+		cell.querySelector(".cell-value").textContent = newValue !== "0" ? newValue : "";
 	});
 }
 
