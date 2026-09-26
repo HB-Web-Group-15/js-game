@@ -6,7 +6,7 @@ const pageState = new State({
   currentPage: "main-page",
 });
 
-pageState.subscribe(({ newState, oldState }) => {
+pageState.subscribe((newState, oldState) => {
   if (newState.currentPage !== oldState.currentPage)
     showPage(newState.currentPage);
   if (newState.currentPage !== "main-page")

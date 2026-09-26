@@ -5,8 +5,6 @@ const timerState = new State({
   timer: 0,
 });
 
-timerState.subscribe(({ newState, oldState }) => {
-  updateTimer(newState, oldState);
-});
+timerState.subscribe(updateTimer);
 
 export default timerState;

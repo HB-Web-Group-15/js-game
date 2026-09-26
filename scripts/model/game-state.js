@@ -16,11 +16,9 @@ const gameState = new State({
   paused: false,
 });
 
-gameState.subscribe(({ newState, oldState }) => {
-  updateGrid(newState, oldState);
-  updateSelectedCell(newState, oldState);
-  updatePauseState(newState, oldState);
-  updateActiveState(newState, oldState);
-});
+gameState.subscribe(updateGrid);
+gameState.subscribe(updateSelectedCell);
+gameState.subscribe(updatePauseState);
+gameState.subscribe(updateActiveState);
 
 export default gameState;

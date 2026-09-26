@@ -5,7 +5,7 @@ const noteState = new State({
   isNoteMode: false,
 });
 
-noteState.subscribe(({ newState, oldState }) => {
+noteState.subscribe((newState, oldState) => {
   // TODO: Change the UI based on notes
   const noteButton = document.getElementById("note-button");
   if (newState.isNoteMode !== oldState.isNoteMode) {
