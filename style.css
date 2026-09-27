@@ -449,3 +449,51 @@ h1 {
     font-size: 11px;
   }
 }
+
+.settings-form {
+  display:flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 400px;
+  margin-top: 1rem;
+}
+
+.settings-field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.settings-field label {
+  font-weight: 600;
+}
+
+.settings-field input[type="text"] {
+  height: 2rem;
+  padding: 1rem, 2rem;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  flex: 1;
+}
+
+.settings-field input[type="checkbox"] {
+  width: 1.25rem;
+  height: 1.25rem;
+  cursor: pointer;
+}
+
+.settings-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.settings-actions .btn {
+  cursor: pointer;
+}
+
+.settings-actions .btn:hover {
+  background-color: #f0f0f0;
+}
+
