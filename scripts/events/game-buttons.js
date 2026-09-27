@@ -1,6 +1,7 @@
 import gameState from "../model/game-state.js";
 import noteState from "../model/note-state.js";
 import timerState from "../model/timer-state.js";
+import { toggleNote, clearNoteForCell } from "../util/sudoku-notes.js";
 import {
   getCell,
   isCellPrefilled,
@@ -17,7 +18,14 @@ document.querySelectorAll(".game-button").forEach((button) => {
       if (!selectedCell) return;
       const { row, col } = selectedCell;
       if (isCellPrefilled(row, col)) return;
-      updateCellValue(row, col, value);
+
+      const {isNoteMode} = noteState.getState();
+      if (isNoteMode) {
+        toggleNote(row, col, value);
+      } else {
+        updateCellValue(row, col, value);
+        clearNoteForCell(row,col)
+      }
       return;
     }
 

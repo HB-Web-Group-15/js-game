@@ -7,8 +7,11 @@ const noteState = new State({
 });
 
 noteState.subscribe((newState, oldState) => {
-  updateNoteButtonUI(newState, oldState);
-  updateNotesUI(newState,oldState);
+  const noteButton = document.getElementById("note-button");
+  if (newState.isNoteMode !== oldState.isNoteMode) {
+    noteButton.classList.toggle("active", newState.isNoteMode);
+  }
+  updateNotesUI(newState, oldState);
 });
 
 export default noteState;
