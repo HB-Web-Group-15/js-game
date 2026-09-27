@@ -1,3 +1,4 @@
+import { updateNoteButtonUI, updateNotesUI } from "../util/sudoku-notes.js";
 import State from "./State.js";
 
 const noteState = new State({
@@ -6,11 +7,8 @@ const noteState = new State({
 });
 
 noteState.subscribe((newState, oldState) => {
-  // TODO: Change the UI based on notes
-  const noteButton = document.getElementById("note-button");
-  if (newState.isNoteMode !== oldState.isNoteMode) {
-    noteButton.classList.toggle("active", newState.isNoteMode);
-  }
+  updateNoteButtonUI(newState, oldState);
+  u+updateNotesUI(newState,oldState);
 });
 
 export default noteState;
