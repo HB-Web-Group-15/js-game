@@ -117,6 +117,20 @@
       <!-- Settings page -->
       <div class="page" id="settings-page">
         <h1>Settings</h1>
+        <form id="settings-form">
+          <label for="player-name-input">Name: </label>  
+          <input id="player-name-input" type="text">
+          <label for="timer-switch">Timer: </label>
+          <input type="checkbox" id="timer-switch" checked>
+          <label for="show-incorrect">Show incorrect: </label>
+          <select id="show-incorrect">
+            <option value="incorrect-cells">Incorrect cells</option>
+            <option value="incorrect-number">Number of incorrect cells</option>
+            <option value="none">None</option>
+          </select>
+          <button type="button" id="settings-apply">Apply</button>
+          <button type="button" id="settings-cancel">Cancel</button>
+        </form>
       </div>
     </main>
 
