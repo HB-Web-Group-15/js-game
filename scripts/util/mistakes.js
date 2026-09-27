@@ -27,7 +27,7 @@ export function updateMistakeFeedback(){
 
     const counterElement = document.getElementById("mistake-counter");
     if (counterElement) {
-        counterElement.style.display = checkMode === "incorrect-count" ? "" : "none";
+        counterElement.style.display = checkMode === "none" ? "none" : "";
         counterElement.textContent = incorrectCount;
     }
 }
