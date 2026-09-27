@@ -41,3 +41,9 @@ export function updateNotesUI(newState, oldState) {
         }
     }
 }
+
+export function updateNoteButtonUI(newState, oldState) {
+    const noteButton = document.getElementById("note-button");
+    if(!noteButton) return;
+    noteButton.classList.toggle("active", newState.isNoteMode);
+}
