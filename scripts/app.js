@@ -5,6 +5,7 @@ import "./events/mobile-menu.js";
 import "./events/new-game.js";
 import "./events/timer.js";
 import "./util/settings.js";
+import "./events/settings.js";
 import gameState from "./model/game-state.js";
 import { createGrid } from "./util/sudoku.js";
 
