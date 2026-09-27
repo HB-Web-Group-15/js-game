@@ -3,7 +3,7 @@ const jsonPuzzles = [];
 async function loadPuzzles() {
   if (jsonPuzzles.length === 0) {
     const response = await fetch(
-      window.location.href + "/assets/json/sudoku.json",
+      window.location.href.replace("index.html", "") + "/assets/json/sudoku.json",
     );
 
     if (!response.ok) {
