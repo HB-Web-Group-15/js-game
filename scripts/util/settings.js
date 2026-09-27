@@ -21,3 +21,8 @@
         document.getElementById("timer-switch").checked = settings.showTimer;
         document.getElementById("show-incorrect").value = settings.incorrectCells;
     }
+
+    export function applyTimerVisibility(settings) {
+        const timer = document.getElementById("game-timer");
+        timer.style.display = settings.showTimer ? "" : "none";
+    }

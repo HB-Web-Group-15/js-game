@@ -1,4 +1,4 @@
-import { saveSettings, loadSettings, applySettingsToForm } from "../util/settings.js"; 
+import { saveSettings, loadSettings, applySettingsToForm, applyTimerVisibility } from "../util/settings.js"; 
     
 document.getElementById("settings-apply").addEventListener("click", function() {
     const newSettings = {
@@ -7,6 +7,7 @@ document.getElementById("settings-apply").addEventListener("click", function() {
         incorrectCells: document.getElementById("show-incorrect").value,
     };
     saveSettings(newSettings);
+    applyTimerVisibility(newSettings);
 });
 
 document.getElementById("settings-cancel").addEventListener("click", function() {
