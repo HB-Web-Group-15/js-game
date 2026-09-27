@@ -47,12 +47,14 @@ document.querySelectorAll(".game-button").forEach((button) => {
           rowValues.every((value, col) => value === solution[row][col]),
         );
 
+        updateMistakeFeedback();
+
         if (isComplete) {
           gameState.setState({ gameActive: false });
           document.getElementById("sudoku-grid").dataset.completed = "true";
           // TODO: Save the time to localStorage
           console.log(timerState.getState().timer);
-        } else updateMistakeFeedback();
+        }
         break;
       }
       case "reset-button": {
