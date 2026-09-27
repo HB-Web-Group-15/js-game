@@ -1,4 +1,5 @@
 import { showPage } from "../util/pages.js";
+import { loadSettings, applySettingsToForm } from "../util/settings.js";
 import gameState from "./game-state.js";
 import State from "./State.js";
 
@@ -20,6 +21,10 @@ pageState.subscribe((newState, oldState) => {
     document.getElementById("sudoku-grid").dataset.completed !== "true"
   )
     gameState.setState({ gameActive: true });
+  
+    if(newState.currentPage === "settings-page") {
+      applySettingsToForm(loadSettings());
+    }
 });
 
 export default pageState;
