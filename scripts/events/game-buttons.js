@@ -63,7 +63,7 @@ document.querySelectorAll(".game-button").forEach((button) => {
         gameState.setState({
           board: puzzle.map((row) => [...row]),
         });
-        noteState.setState({ noteCells: new Set() });
+        noteState.setState({ notedCells: new Set() });
         break;
       }
     }
