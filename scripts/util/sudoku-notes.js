@@ -28,3 +28,16 @@ export function clearNoteForCell(row,col){
         noteState.setState({notedCells});
     }
 }
+
+export function updateNotesUI(newState, oldState) {
+    for(let row = 0; row < 9; row++){
+        for(let col = 0; col < 9; col++){
+            for(let value = 1; value <= 9; value++){
+                const key = `${row}-${col}-${value}`;
+                const noteElement = document.getElementById(`note-${row}-${col}-${value}`);
+                if(!noteElement) continue;
+                noteElement.classList.toggle("visible", newState.notedCells.has(key));
+            }
+        }
+    }
+}
