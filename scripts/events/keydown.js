@@ -1,3 +1,4 @@
+import { toggleNote, clearNoteForCell } from "../util/sudoku-notes.js";
 import gameState from "../model/game-state.js";
 import noteState from "../model/note-state.js";
 import {
@@ -16,7 +17,14 @@ document.addEventListener("keydown", (event) => {
     if (!selectedCell) return;
     const { row, col } = selectedCell;
     if (isCellPrefilled(row, col)) return;
-    updateCellValue(row, col, key);
+
+    const {isNoteMode} = noteState.getState(); 
+    if(isNoteMode){
+      toggleNote(row, col, key);
+    } else {
+      updateCellValue(row, col, key);
+      clearNoteForCell(row, col);
+    }
     return;
   }
 

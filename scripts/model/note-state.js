@@ -8,7 +8,7 @@ const noteState = new State({
 
 noteState.subscribe((newState, oldState) => {
   updateNoteButtonUI(newState, oldState);
-  u+updateNotesUI(newState,oldState);
+  updateNotesUI(newState,oldState);
 });
 
 export default noteState;
