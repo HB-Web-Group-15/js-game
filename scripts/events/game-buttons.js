@@ -2,11 +2,7 @@ import gameState from "../model/game-state.js";
 import noteState from "../model/note-state.js";
 import timerState from "../model/timer-state.js";
 import { toggleNote, clearNoteForCell } from "../util/sudoku-notes.js";
-import {
-  getCell,
-  isCellPrefilled,
-  updateCellValue,
-} from "../util/sudoku-cells.js";
+import { isCellPrefilled, updateCellValue } from "../util/sudoku-cells.js";
 
 document.querySelectorAll(".game-button").forEach((button) => {
   button.addEventListener("click", (event) => {
@@ -45,18 +41,11 @@ document.querySelectorAll(".game-button").forEach((button) => {
       case "check-button": {
         const { board, solution } = gameState.getState();
         if (!board || !solution) return;
-        let isComplete = true;
-        for (let row = 0; row < 9; row++) {
-          for (let col = 0; col < 9; col++) {
-            const cell = getCell(row, col);
-            if (!cell) continue;
-            const value = board[row][col];
-            const isFilled = value !== "0";
-            const isCorrect = value === solution[row][col];
-            cell.classList.toggle("incorrect", isFilled && !isCorrect);
-            if (!isCorrect) isComplete = false;
-          }
-        }
+
+        const isComplete = board.every((rowValues, row) =>
+          rowValues.every((value, col) => value === solution[row][col]),
+        );
+
         if (isComplete) {
           gameState.setState({ gameActive: false });
           document.getElementById("sudoku-grid").dataset.completed = "true";
