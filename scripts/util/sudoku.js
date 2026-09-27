@@ -1,6 +1,8 @@
 import { getNewBoard } from "../api/SudokuApi.js";
 import gameState from "../model/game-state.js";
+import noteState from "../model/note-state.js";
 import timerState from "../model/timer-state.js";
+import { updateMistakeFeedback } from "./mistakes.js";
 import {
   clearHighlightedCells,
   clearNumbersHighlight,
@@ -148,4 +150,32 @@ export function updateTimer(newState, oldState) {
     return; // If the timer hasn't changed by at least a second, we skip the update
   const timerElement = document.getElementById("game-timer");
   timerElement.textContent = formatTime(parseInt(newState.timer / 1000));
+}
+
+export function checkSolution() {
+  const { board, solution } = gameState.getState();
+  if (!board || !solution) return;
+
+  const isComplete = board.every((rowValues, row) =>
+    rowValues.every((value, col) => value === solution[row][col]),
+  );
+
+  updateMistakeFeedback();
+
+  if (isComplete) {
+    gameState.setState({ gameActive: false });
+    document.getElementById("sudoku-grid").dataset.completed = "true";
+    // TODO: Save the time to localStorage
+    console.log(timerState.getState().timer);
+  }
+}
+
+export function resetGame() {
+  const { puzzle } = gameState.getState();
+  if (!puzzle) return;
+  gameState.setState({
+    board: puzzle.map((row) => [...row]),
+  });
+  noteState.setState({ notedCells: new Set() });
+  updateMistakeFeedback();
 }

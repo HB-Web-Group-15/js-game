@@ -1,4 +1,3 @@
-import { toggleNote, clearNoteForCell } from "../util/sudoku-notes.js";
 import gameState from "../model/game-state.js";
 import noteState from "../model/note-state.js";
 import {
@@ -6,6 +5,8 @@ import {
   selectCell,
   updateCellValue,
 } from "../util/sudoku-cells.js";
+import { clearNoteForCell, toggleNote } from "../util/sudoku-notes.js";
+import { checkSolution, resetGame } from "../util/sudoku.js";
 
 document.addEventListener("keydown", (event) => {
   const { key } = event;
@@ -18,8 +19,8 @@ document.addEventListener("keydown", (event) => {
     const { row, col } = selectedCell;
     if (isCellPrefilled(row, col)) return;
 
-    const {isNoteMode} = noteState.getState(); 
-    if(isNoteMode){
+    const { isNoteMode } = noteState.getState();
+    if (isNoteMode) {
       toggleNote(row, col, key);
     } else {
       updateCellValue(row, col, key);
@@ -57,6 +58,19 @@ document.addEventListener("keydown", (event) => {
       const { isNoteMode } = noteState.getState();
       noteState.setState({ isNoteMode: !isNoteMode });
       break;
+    }
+    case "Enter": {
+      checkSolution();
+      break;
+    }
+    case "R": {
+      resetGame();
+      break;
+    }
+    case " ": {
+      event.preventDefault();
+      const { paused } = gameState.getState();
+      gameState.setState({ paused: !paused });
     }
   }
 });

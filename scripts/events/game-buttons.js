@@ -1,9 +1,8 @@
 import gameState from "../model/game-state.js";
 import noteState from "../model/note-state.js";
-import timerState from "../model/timer-state.js";
-import { updateMistakeFeedback } from "../util/mistakes.js";
 import { isCellPrefilled, updateCellValue } from "../util/sudoku-cells.js";
 import { clearNoteForCell, toggleNote } from "../util/sudoku-notes.js";
+import { checkSolution, resetGame } from "../util/sudoku.js";
 
 document.querySelectorAll(".game-button").forEach((button) => {
   button.addEventListener("click", (event) => {
@@ -40,30 +39,11 @@ document.querySelectorAll(".game-button").forEach((button) => {
         break;
       }
       case "check-button": {
-        const { board, solution } = gameState.getState();
-        if (!board || !solution) return;
-
-        const isComplete = board.every((rowValues, row) =>
-          rowValues.every((value, col) => value === solution[row][col]),
-        );
-
-        updateMistakeFeedback();
-
-        if (isComplete) {
-          gameState.setState({ gameActive: false });
-          document.getElementById("sudoku-grid").dataset.completed = "true";
-          // TODO: Save the time to localStorage
-          console.log(timerState.getState().timer);
-        }
+        checkSolution();
         break;
       }
       case "reset-button": {
-        const { puzzle } = gameState.getState();
-        if (!puzzle) return;
-        gameState.setState({
-          board: puzzle.map((row) => [...row]),
-        });
-        noteState.setState({ notedCells: new Set() });
+        resetGame();
         break;
       }
     }
