@@ -13,8 +13,8 @@ export function loadScores() {
   }
 }
 
-export function saveScore(name, time) {
-  const score = { name, time };
+export function saveScore(name, time, difficulty) {
+  const score = { name, time, difficulty };
   const loaded = loadScores();
   loaded.push(score);
   localStorage.setItem("scores", JSON.stringify(loaded));
@@ -22,11 +22,12 @@ export function saveScore(name, time) {
 
 export function populateScoreboard(scores) {
   const scoreboard = document.getElementById("scoreboard");
-  scoreboard.innerHTML = "<tr><th>Rank</th><th>Name</th><th>Time</th></tr>";
+  scoreboard.innerHTML =
+    "<tr><th>Rank</th><th>Name</th><th>Time</th><th>Difficulty</th></tr>";
   if (!scores || scores.length === 0) {
     const noScoresRow = document.createElement("tr");
     const noScoresCell = document.createElement("td");
-    noScoresCell.setAttribute("colspan", "3");
+    noScoresCell.setAttribute("colspan", "4");
     noScoresCell.textContent = "No scores yet.";
     noScoresRow.appendChild(noScoresCell);
     scoreboard.appendChild(noScoresRow);
@@ -44,6 +45,10 @@ export function populateScoreboard(scores) {
     const scoreTime = document.createElement("td");
     scoreTime.textContent = formatTime(element.time / 1000);
     scoreRow.appendChild(scoreTime);
+    const scoreDifficulty = document.createElement("td");
+    scoreDifficulty.textContent = element.difficulty;
+    scoreDifficulty.style.textTransform = "capitalize";
+    scoreRow.appendChild(scoreDifficulty);
     scoreboard.appendChild(scoreRow);
   });
 }

@@ -3,8 +3,8 @@ import gameState from "../model/game-state.js";
 import noteState from "../model/note-state.js";
 import timerState from "../model/timer-state.js";
 import { updateMistakeFeedback } from "./mistakes.js";
-import { loadSettings } from "./settings.js";
 import { saveScore } from "./scores.js";
+import { loadSettings } from "./settings.js";
 import {
   clearHighlightedCells,
   clearNumbersHighlight,
@@ -169,7 +169,11 @@ export function checkSolution() {
     document.getElementById("sudoku-grid").dataset.completed = "true";
     let name = loadSettings().playerName;
     while (name.length < 1) name = prompt("Enter your name: ");
-    saveScore(name, parseInt(timerState.getState().timer));
+    saveScore(
+      name,
+      parseInt(timerState.getState().timer),
+      gameState.getState().difficulty,
+    );
   }
 }
 
