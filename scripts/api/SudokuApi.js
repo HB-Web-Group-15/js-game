@@ -3,7 +3,7 @@ const jsonPuzzles = [];
 async function loadPuzzles() {
   if (jsonPuzzles.length === 0) {
     const response = await fetch(
-      window.Location.origin +
+      window.location.origin +
         window.location.pathname.replace("/index.html", "") +
         "/assets/json/sudoku.json",
     );
