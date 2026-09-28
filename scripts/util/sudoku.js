@@ -3,6 +3,8 @@ import gameState from "../model/game-state.js";
 import noteState from "../model/note-state.js";
 import timerState from "../model/timer-state.js";
 import { updateMistakeFeedback } from "./mistakes.js";
+import { loadSettings } from "./settings.js";
+import { saveScore } from "./scores.js";
 import {
   clearHighlightedCells,
   clearNumbersHighlight,
@@ -165,8 +167,9 @@ export function checkSolution() {
   if (isComplete) {
     gameState.setState({ gameActive: false });
     document.getElementById("sudoku-grid").dataset.completed = "true";
-    // TODO: Save the time to localStorage
-    console.log(timerState.getState().timer);
+    let name = loadSettings().playerName;
+    while (name.length < 1) name = prompt("Enter your name: ");
+    saveScore(name, parseInt(timerState.getState().timer));
   }
 }
 
