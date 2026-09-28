@@ -23,7 +23,15 @@ export function saveScore(name, time) {
 export function populateScoreboard(scores) {
   const scoreboard = document.getElementById("scoreboard");
   scoreboard.innerHTML = "<tr><th>Rank</th><th>Name</th><th>Time</th></tr>";
-  if (!scores) return;
+  if (!scores || scores.length === 0) {
+    const noScoresRow = document.createElement("tr");
+    const noScoresCell = document.createElement("td");
+    noScoresCell.setAttribute("colspan", "3");
+    noScoresCell.textContent = "No scores yet.";
+    noScoresRow.appendChild(noScoresCell);
+    scoreboard.appendChild(noScoresRow);
+    return;
+  }
   const sorted = scores.toSorted((a, b) => a.time - b.time);
   sorted.forEach((element, i) => {
     const scoreRow = document.createElement("tr");
