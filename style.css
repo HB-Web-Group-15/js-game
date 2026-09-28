@@ -330,6 +330,83 @@ h1 {
   background-color: #ccc;
 }
 
+#scores-page.page-active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+#scores-page h1 {
+  margin-bottom: 1rem;
+}
+
+table#scoreboard {
+  border: 1px solid #ddd;
+  border-collapse: collapse;
+}
+
+#scoreboard th,
+#scoreboard td {
+  border: 1px solid #ddd;
+  padding: 0.5rem 1rem;
+}
+
+#settings-page.page-active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.settings-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 400px;
+  margin-top: 1rem;
+}
+
+.settings-field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.settings-field label {
+  font-weight: 600;
+}
+
+.settings-field input[type="text"] {
+  height: 2rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  flex: 1;
+}
+
+.settings-field input[type="checkbox"] {
+  width: 1.25rem;
+  height: 1.25rem;
+  cursor: pointer;
+}
+
+.settings-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.settings-actions .btn {
+  cursor: pointer;
+}
+
+.settings-actions .btn:hover {
+  background-color: #f0f0f0;
+}
+
 @media (max-width: 1200px) {
   .main-container {
     max-width: 1000px;
@@ -449,51 +526,3 @@ h1 {
     font-size: 11px;
   }
 }
-
-.settings-form {
-  display:flex;
-  flex-direction: column;
-  gap: 1rem;
-  max-width: 400px;
-  margin-top: 1rem;
-}
-
-.settings-field {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.settings-field label {
-  font-weight: 600;
-}
-
-.settings-field input[type="text"] {
-  height: 2rem;
-  padding: 1rem, 2rem;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  flex: 1;
-}
-
-.settings-field input[type="checkbox"] {
-  width: 1.25rem;
-  height: 1.25rem;
-  cursor: pointer;
-}
-
-.settings-actions {
-  display: flex;
-  gap: 1rem;
-  margin-top: 0.5rem;
-}
-
-.settings-actions .btn {
-  cursor: pointer;
-}
-
-.settings-actions .btn:hover {
-  background-color: #f0f0f0;
-}
-
